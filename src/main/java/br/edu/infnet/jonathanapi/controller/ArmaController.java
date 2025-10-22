@@ -4,15 +4,9 @@ import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import br.edu.infnet.jonathanapi.exceptions.ResourceNotFoundException;
 import br.edu.infnet.jonathanapi.model.domain.Arma;
 import br.edu.infnet.jonathanapi.model.domain.service.ArmaService;
 
@@ -39,25 +33,28 @@ public class ArmaController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Arma> obterPorId(@PathVariable Integer id) {
-        Arma arma = armaService.obterPorId(id);
-        if (arma != null) {
-            return ResponseEntity.ok(arma);
-        }
-        return ResponseEntity.notFound().build();
+        return ResponseEntity.ok(buscarArmaOuLancarExcecao(id));
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<Arma> alterar(@PathVariable Integer id, @RequestBody Arma arma) {
+        buscarArmaOuLancarExcecao(id);
         Arma armaAlterada = armaService.alterar(id, arma);
-        if (armaAlterada != null) {
-            return ResponseEntity.ok(armaAlterada);
-        }
-        return ResponseEntity.notFound().build();
+        return ResponseEntity.ok(armaAlterada);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> excluir(@PathVariable Integer id) {
+        buscarArmaOuLancarExcecao(id);
         armaService.excluir(id);
         return ResponseEntity.noContent().build();
+    }
+
+    private Arma buscarArmaOuLancarExcecao(Integer id) {
+        Arma arma = armaService.obterPorId(id);
+        if (arma == null) {
+            throw new ResourceNotFoundException("Arma", id);
+        }
+        return arma;
     }
 }

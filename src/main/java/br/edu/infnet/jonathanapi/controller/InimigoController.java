@@ -4,15 +4,9 @@ import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import br.edu.infnet.jonathanapi.exceptions.ResourceNotFoundException;
 import br.edu.infnet.jonathanapi.model.domain.Inimigo;
 import br.edu.infnet.jonathanapi.model.domain.service.InimigoService;
 
@@ -39,34 +33,37 @@ public class InimigoController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Inimigo> obterPorId(@PathVariable Integer id) {
-        Inimigo inimigo = inimigoService.obterPorId(id);
-        if (inimigo != null) {
-            return ResponseEntity.ok(inimigo);
-        }
-        return ResponseEntity.notFound().build();
+        return ResponseEntity.ok(buscarInimigoOuLancarExcecao(id));
     }
 
     @GetMapping("/aleatorio")
     public ResponseEntity<Inimigo> obterInimigoAleatorio() {
         Inimigo inimigo = inimigoService.obterInimigoAleatorio();
-        if (inimigo != null) {
-            return ResponseEntity.ok(inimigo);
+        if (inimigo == null) {
+            throw new ResourceNotFoundException("Nenhum inimigo disponível no sistema");
         }
-        return ResponseEntity.notFound().build();
+        return ResponseEntity.ok(inimigo);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<Inimigo> alterar(@PathVariable Integer id, @RequestBody Inimigo inimigo) {
+        buscarInimigoOuLancarExcecao(id);
         Inimigo inimigoAlterado = inimigoService.alterar(id, inimigo);
-        if (inimigoAlterado != null) {
-            return ResponseEntity.ok(inimigoAlterado);
-        }
-        return ResponseEntity.notFound().build();
+        return ResponseEntity.ok(inimigoAlterado);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> excluir(@PathVariable Integer id) {
+        buscarInimigoOuLancarExcecao(id);
         inimigoService.excluir(id);
         return ResponseEntity.noContent().build();
+    }
+
+    private Inimigo buscarInimigoOuLancarExcecao(Integer id) {
+        Inimigo inimigo = inimigoService.obterPorId(id);
+        if (inimigo == null) {
+            throw new ResourceNotFoundException("Inimigo", id);
+        }
+        return inimigo;
     }
 }

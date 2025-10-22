@@ -4,16 +4,9 @@ import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import br.edu.infnet.jonathanapi.exceptions.ResourceNotFoundException;
 import br.edu.infnet.jonathanapi.model.domain.Magia;
 import br.edu.infnet.jonathanapi.model.domain.service.MagiaService;
 
@@ -40,37 +33,38 @@ public class MagiaController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Magia> obterPorId(@PathVariable Integer id) {
-        Magia magia = magiaService.obterPorId(id);
-        if (magia != null) {
-            return ResponseEntity.ok(magia);
-        }
-        return ResponseEntity.notFound().build();
+        return ResponseEntity.ok(buscarMagiaOuLancarExcecao(id));
     }
 
     @GetMapping("/rank/{rank}")
     public ResponseEntity<List<Magia>> obterPorRank(@PathVariable String rank) {
-        List<Magia> magias = magiaService.obterPorRank(rank);
-        return ResponseEntity.ok(magias);
+        return ResponseEntity.ok(magiaService.obterPorRank(rank));
     }
 
     @GetMapping("/custo")
     public ResponseEntity<List<Magia>> obterPorCustoMaximo(@RequestParam int custoMaximo) {
-        List<Magia> magias = magiaService.obterPorCustoMaximo(custoMaximo);
-        return ResponseEntity.ok(magias);
+        return ResponseEntity.ok(magiaService.obterPorCustoMaximo(custoMaximo));
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<Magia> alterar(@PathVariable Integer id, @RequestBody Magia magia) {
+        buscarMagiaOuLancarExcecao(id);
         Magia magiaAlterada = magiaService.alterar(id, magia);
-        if (magiaAlterada != null) {
-            return ResponseEntity.ok(magiaAlterada);
-        }
-        return ResponseEntity.notFound().build();
+        return ResponseEntity.ok(magiaAlterada);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> excluir(@PathVariable Integer id) {
+        buscarMagiaOuLancarExcecao(id);
         magiaService.excluir(id);
         return ResponseEntity.noContent().build();
+    }
+
+    private Magia buscarMagiaOuLancarExcecao(Integer id) {
+        Magia magia = magiaService.obterPorId(id);
+        if (magia == null) {
+            throw new ResourceNotFoundException("Magia", id);
+        }
+        return magia;
     }
 }
