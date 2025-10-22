@@ -1,0 +1,5 @@
+Espada Longa;15;pesada
+Adaga Envenenada;8;leve
+Machado de Guerra;18;pesada
+Arco Élfico;12;leve
+Martelo do Trovão;20;pesada

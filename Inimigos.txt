@@ -1,0 +1,5 @@
+Goblin;50;8;6;12;10
+Orc Guerreiro;80;15;12;8;7
+Dragão Vermelho;200;25;20;10;15
+Esqueleto;40;10;5;8;9
+Troll das Montanhas;150;20;18;6;5
