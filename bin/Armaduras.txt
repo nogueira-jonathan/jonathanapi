@@ -1,0 +1,5 @@
+Armadura de Couro;5
+Cota de Malha;10
+Armadura de Placas;15
+Manto Élfico;8
+Escudo de Aço;12

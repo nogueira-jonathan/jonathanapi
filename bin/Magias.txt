@@ -1,0 +1,6 @@
+Bola de Fogo;20;D;10
+Raio;25;C;15
+Tornado;30;B;20
+Terremoto;35;A;25
+Explosão Estelar;45;S;30
+Supernova;60;SS;40

@@ -1,0 +1,60 @@
+Aldric o Bravo;120;18;16;14;15
+Beatrice de Aquitaine;95;12;14;16;17
+Cedric Machado de Ferro;140;20;18;10;11
+Isolde a Sábia;85;10;12;13;16
+Godwin o Leal;110;16;15;12;13
+Rowena das Terras Altas;100;14;13;17;18
+Thaddeus Coração de Leão;130;19;17;11;12
+Morgana a Encantadora;90;11;11;15;18
+Baldwin o Justo;105;15;14;13;14
+Elspeth a Curadora;80;9;13;14;19
+Gareth Punho de Aço;135;21;19;9;10
+Gwendolyn a Pura;88;10;12;16;17
+Roderick o Destemido;125;17;16;12;13
+Aelwyn a Arqueira;92;13;11;19;20
+Oswald o Protetor;115;16;15;11;12
+Meredith a Nobre;97;12;14;15;16
+Edmund Espada Negra;128;18;17;13;14
+Sabrina das Sombras;86;11;10;18;20
+Percival o Cavaleiro;122;17;16;12;13
+Elowen a Caçadora;94;14;12;17;18
+Tristan o Errante;108;15;14;14;15
+Guinevere a Bela;83;9;11;16;18
+Alaric o Conquistador;138;20;18;10;11
+Rosalind a Donzela;91;12;13;15;17
+Godfrey o Velho;102;14;15;10;11
+Marian a Corajosa;98;13;12;16;17
+Siward Machado de Guerra;133;19;17;11;12
+Eleonora a Graciosa;87;10;11;18;19
+Reginald o Guardião;118;16;15;12;13
+Aveline a Feroz;96;14;13;17;16
+Bertrand o Sábio;100;13;14;13;15
+Isolda a Vingadora;93;12;12;16;17
+Cedric o Jovem;112;15;14;15;16
+Morgause a Feiticeira;82;9;10;14;18
+Godefroy o Forte;142;21;19;8;9
+Genevieve a Piedosa;89;11;12;15;17
+Radulf o Invencível;127;18;17;11;12
+Rowena a Vermelha;95;13;11;18;19
+Osric o Desafiador;114;16;15;13;14
+Edith a Justa;92;12;13;14;16
+Siegfried Coração Valente;136;20;18;10;11
+Matilda a Guerreira;99;14;12;16;15
+Wulfric o Lobo;124;17;16;13;14
+Lenora a Silenciosa;84;10;11;19;21
+Bardolph o Bárbaro;145;22;20;9;8
+Rosamund a Cantora;88;11;12;17;19
+Thurstan o Montanhês;119;16;15;12;13
+Ysolde das Névoas;90;12;11;18;20
+Fulk o Implacável;131;19;17;11;12
+Adelina a Curandeira;85;9;13;15;18
+Godric Mão de Ferro;126;18;16;12;13
+Emmeline a Arqueira;94;13;12;19;20
+Leofric o Caçador;113;15;14;16;17
+Hildegarde a Sábia;81;10;12;14;17
+Raynald o Audaz;129;18;17;13;14
+Clarice a Nobre;96;12;13;15;16
+Aldwin o Campeão;134;19;18;11;12
+Millicent a Escudeira;91;13;11;17;18
+Bohemond o Cruzado;139;20;18;10;11
+Sybil a Mística;79;8;10;16;19
